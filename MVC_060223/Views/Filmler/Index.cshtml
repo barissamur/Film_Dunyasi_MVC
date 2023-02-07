@@ -5,9 +5,9 @@
 
 <h1>Filmler</h1>
 
-<a asp-action="Yeni">Yeni Film</a>
+<a class="mt-4" asp-action="Yeni">Yeni Film</a>
 
-<table class="table">
+<table class="table mt-3">
     <thead>
         <tr>
             <th>Id</th>
@@ -30,7 +30,7 @@
                     @string.Join(", ", item.Turler.Select(x => x.Ad))
                 </td>
                 <td>
-                    <a class="text-danger me-4" asp-action="Duzenle" asp-route-id="@item.Id">Düzenle</a>
+                    <a class="text-warning me-4" asp-action="Duzenle" asp-route-id="@item.Id">Düzenle</a>
                     <a class="text-danger" asp-action="Sil" asp-route-id="@item.Id">Sil</a>
                 </td>
             </tr>

@@ -12,13 +12,14 @@ namespace MVC_060223.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly UygulamaDbContext _db;
 
+
         public HomeController(ILogger<HomeController> logger, UygulamaDbContext db)
         {
             _logger = logger;
             _db=db;
         }
 
-        public IActionResult Index(int? turId)
+        public IActionResult Index(int? turId, string? sira)
         {
             IQueryable<Film> filmler = _db.Filmler.Include(x => x.Turler);
 
@@ -31,11 +32,22 @@ namespace MVC_060223.Controllers
                 Value = x.Id.ToString()
             }).ToList();
 
+            if (sira == "ad")
+                filmler =  filmler.OrderBy(x => x.Ad);
+
+            else if (sira == "yil")
+                filmler =  filmler.OrderBy(x => x.Yil);
+
+            else if (sira == "puan")
+                filmler =  filmler.OrderBy(x => x.Puan);
+
             var vm = new HomeViewModel()
             {
                 Filmler = filmler.ToList(),
                 TurId = turId
             };
+
+
 
             return View(vm);
         }

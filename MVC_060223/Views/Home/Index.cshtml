@@ -12,7 +12,7 @@
 </form>
 
 <table class="table mt-2">
-    <thead><tr><th>Id</th><th>Ad</th><th>Yıl</th><th>Puan</th><th>Türler</th></tr></thead>
+    <thead><tr><th>Id</th><th><a asp-action="Index" asp-route-sira="ad">Ad</a></th><th><a asp-action="Index" asp-route-sira="yil">Yıl</a></th><th><a asp-action="Index" asp-route-sira="puan">Puan</a></th><th>Türler</th></tr></thead>
     <tbody>
         @foreach (var item in Model.Filmler)
         {
